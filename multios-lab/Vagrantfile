@@ -1,0 +1,23 @@
+#require 'vagrant-ansible'
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure('2') do |config|
+#Vagrant::Config.run do |config|
+
+  config.vm.define :centos do |centos_config|
+    centos_config.vm.box = "centos64"
+    centos_config.vm.network 'private_network' , ip: "192.168.20.20"
+  end
+
+  config.vm.define :ubuntu do |ubuntu_config|
+    ubuntu_config.vm.box = "ubuntu/trusty64"
+    ubuntu_config.vm.network 'private_network', ip: "192.168.20.21"
+  end
+
+  config.vm.define :solaris do |solaris_config|
+    solaris_config.vm.box = "solaris"
+    solaris_config.vm.network 'private_network', ip: "192.168.20.22"
+  end
+
+end
