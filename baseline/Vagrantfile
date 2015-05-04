@@ -1,7 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-agrant.configure(2) do |config|
- config.vm.box = "base"
-
+Vagrant.configure(2) do |config|
+    config.vm.box = "base"
 end
