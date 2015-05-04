@@ -1,0 +1,4 @@
+- name: create dba groups
+  group: name={{ item.key }} gid={{ item.value.gid }} state=present
+  with_dict: dba_group
+  sudo: true

@@ -1,0 +1,18 @@
+etc-hosts:
+    puppet:
+        ip: 192.168.30.10
+        fqdn: puppet.lab.local
+        hostname: puppet
+    ldap:
+        ip: 192.168.30.11
+        fqdn: ldap.lab.local
+        hostname: ldap
+    web:
+       ip: 192.168.30.12
+       fqdn: web.lab.local
+       hostname: web
+    db: 
+        ip: 192.168.30.13
+        fqdn: db.lab.local
+        hostname: db
+

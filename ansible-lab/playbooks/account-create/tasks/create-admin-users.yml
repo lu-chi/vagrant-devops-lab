@@ -1,0 +1,4 @@
+- name: create admin users
+  user: name={{ item.key }} uid={{ item.value.uid }} password=$password groups={{ item.value.group }}
+  with_dict: admin_users
+  sudo: true

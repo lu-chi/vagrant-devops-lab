@@ -1,0 +1,47 @@
+# passwords to generate:
+# openssl rand -base64 14 | pbcopy'
+# pwgen
+
+adminpassword: ''
+dbapassword: ''
+
+admin_users:
+ ldp-user001:
+   uid: 10001
+   group: ldp-admin
+
+ ldp-user002:
+   uid: 10002
+   group: ldp-admin
+
+ ldp-user003:
+   uid: 10003
+   group: ldp-admin
+
+ ldp-user004:
+   uid: 10004
+   group: ldp-admin
+
+ ldp-user005:
+   uid: 10005
+   group: ldp-admin
+
+dba_users:
+ ldp-user011:
+   uid: 10006
+   group: ldp-dba
+
+ ldp-user012:
+   uid: 10007
+   group: ldp-dba
+
+admin_group:
+  ldp-admin:
+    gid: 10000
+
+dba_group:
+  ldp-dba:
+   gid: 10001
+
+
+

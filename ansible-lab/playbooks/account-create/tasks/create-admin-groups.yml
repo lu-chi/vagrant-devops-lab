@@ -1,0 +1,4 @@
+- name: create admin groups
+  group: name={{ item.key }} gid={{ item.value.gid }} state=present
+  with_dict: admin_group
+  sudo: true

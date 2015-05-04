@@ -1,0 +1,19 @@
+- hosts: all
+  user: vagrant
+
+  vars_files:
+    - vars/users.yml
+    - vars/fids.yml
+
+  tasks:
+    - include: tasks/create-admin-groups.yml
+    - include: tasks/create-dba-groups.yml
+    - include: tasks/create-admin-users.yml
+    - include: tasks/create-dba-users.yml
+    - include: tasks/modify-admin-password.yml
+    - include: tasks/modify-dba-password.yml
+#    - include: tasks/replace-sudoers.yml
+#    - include: takas/create-fids.yml
+#    - include: tasks/modify-fid-password.yml
+  tags:
+    - create_accounts 

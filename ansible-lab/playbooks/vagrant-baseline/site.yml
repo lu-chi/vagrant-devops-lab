@@ -1,0 +1,63 @@
+- hosts: all
+  sudo: yes
+  user: vagrant
+  gather_facts: no
+
+  vars_files:
+    - vars/etc-hosts
+ 
+  tasks:
+    - name: Update systems
+      apt: update_cache=yes
+      tags:
+        - update
+
+    - name: Upgrade distro
+      apt: upgrade=dist
+      tags:
+        - upgrade
+
+    - name: Install Puppet Agent
+      apt: name=puppet state=installed
+
+    - name: Assemble /etc/hosts file
+      lineinfile: dest=/etc/hosts line="{{ item }}"
+      with_items:
+        - 192.168.30.10 puppet.lab.local puppet
+        - 192.168.30.11 ldap.lab.local ldap
+        - 192.168.30.12 web.lab.local web
+        - 192.168.30.13 db.lab.local db
+      tags:
+        - assemble
+
+    - name: Enable Puppet Agent
+      shell: puppet agent --enable
+      tags: 
+        - agent_enable
+
+    - name: Test connection to Puppet Master
+      shell: puppet agent --test --server=puppet
+      tags: 
+        - agent_test
+
+
+- hosts: server
+  sudo: true
+  user: vagrant
+
+  tasks:
+    - name: Install Puppet Master
+      apt: name=puppetmaster state=installed
+      notify:
+        - Restart Puppet Master
+      tags:
+        - puppetmaster_install
+
+    - name: Create site.pp
+      shell: touch /etc/puppet/manifests/site.pp
+
+  handlers:
+    - name: Restart Puppet Master
+      service: name=puppetmaster state=restarted
+
+

@@ -1,0 +1,31 @@
+# passwords to generate:
+# openssl rand -base64 14 | pbcopy'
+# pwgen
+
+fids:
+
+   jvmuser:
+      uid: 10020
+      group: jvmuser
+      password: ''
+
+   appuser:
+      uid: 10021
+      group: appuser
+      password: ''
+
+   produser:
+      uid: 10022
+      group: produser
+      password: ''
+
+   ldpuser:
+      uid: 10023
+      group: ldpuser
+      password: ''
+
+
+      
+
+
+

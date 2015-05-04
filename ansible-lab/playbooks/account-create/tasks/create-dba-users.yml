@@ -1,0 +1,4 @@
+- name: create dba users
+  user: name={{ item.key }} uid={{ item.value.uid }} password=$password groups={{ item.value.group }}
+  with_dict: dba_users
+  sudo: true

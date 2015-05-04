@@ -1,0 +1,3 @@
+- name: create FID (Functional ID) account
+  user: name={{ item.key }} uid={{ item.value.uid }} #groups={{ item.value.group }}
+  with_dict: fids

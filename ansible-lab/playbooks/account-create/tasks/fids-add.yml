@@ -1,0 +1,20 @@
+- hosts: tag_Environment_PROD
+  user: eircom-admin
+  sudo: true
+  gather_facts: no
+
+  vars_files:
+     - ../vars/aer-fid-vars.yml
+
+  tasks:
+
+     - name: create FID (Functional ID) account
+       user: name={{ item.key }} uid={{ item.value.uid }} #groups={{ item.value.group }}
+       with_dict: fids
+
+     - name: Modify admin users password
+       shell: usermod -p $(echo '{{ item.value.password }}' | openssl passwd -1 -stdin) {{ item.key }}
+       with_dict: fids
+       
+#     - name: Replace the sudoers file
+#       copy: src=files/sudoers  dest=/etc/sudoers owner=root group=root mode=0440

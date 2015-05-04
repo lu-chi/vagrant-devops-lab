@@ -1,0 +1,6 @@
+# Added by ansible bootstrap script
+192.168.30.10 puppet.lab.local puppet
+192.168.30.11 ldap.lab.local ldap
+192.168.30.12 web.lab.local web
+192.168.30.13 db.lab.local db
+
